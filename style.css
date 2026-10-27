@@ -133,3 +133,7 @@ footer p { margin: 0 0 4px; }
 .projects img { width: 48px; height: 48px; border-radius: 12px; flex: none; }
 .projects b { display: block; }
 .projects span { color: var(--muted); font-size: .9rem; }
+
+.home section > .wrap > h2 { margin-bottom: 20px; }
+.hero .wrap { position: relative; }
+.lang-switch { position: absolute; top: -40px; right: 16px; font-size: .9rem; }

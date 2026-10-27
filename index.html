@@ -5,16 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>異世界救援・喵星水管家｜官方網站</title>
 <meta name="description" content="《異世界救援 Isekai SOS》與《喵星水管家 WaterPurr》官方網站：App 介紹、隱私權政策與支援聯絡方式。">
+<link rel="canonical" href="https://jasonhungapp.github.io/">
+<link rel="alternate" hreflang="zh-Hant" href="https://jasonhungapp.github.io/">
+<link rel="alternate" hreflang="en" href="https://jasonhungapp.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://jasonhungapp.github.io/en/">
 <link rel="stylesheet" href="style.css">
+<script>
+  // 瀏覽器首選語言不是中文就轉到英文版；從英文版點「中文」會帶 ?lang=zh 並記住，不再轉
+  (function () {
+    var pref;
+    if (/[?&]lang=zh/.test(location.search)) {
+      try { localStorage.setItem("lang", "zh"); } catch (e) {}
+      return;
+    }
+    try { pref = localStorage.getItem("lang"); } catch (e) {}
+    if (pref === "zh") return;
+    var first = ((navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
+    if (first && first.indexOf("zh") !== 0) location.replace("en/" + location.hash);
+  })();
+</script>
 </head>
-<body>
+<body class="home">
 
 <header class="hero">
   <div class="wrap">
+    <nav class="lang-switch"><a href="en/" hreflang="en" lang="en">English</a></nav>
     <h1>異世界救援・喵星水管家</h1>
-    <p class="role">官方網站 <span class="en">· Isekai SOS &amp; WaterPurr Official Site</span></p>
+    <p class="role">官方網站</p>
     <p>這裡提供 App 介紹、商店連結、隱私權政策，以及使用上遇到問題時的聯絡方式。</p>
-    <p class="en">App info, store links, privacy policies and support for Isekai SOS and WaterPurr.</p>
     <div class="links">
       <a class="btn primary" href="#apps">App 介紹</a>
       <a class="btn" href="#support">支援與聯絡</a>
@@ -25,7 +43,6 @@
 <section id="apps">
   <div class="wrap">
     <h2>App</h2>
-    <p class="en">Apps</p>
 
     <article class="app">
       <div class="app-head">
@@ -36,7 +53,6 @@
         </div>
       </div>
       <p>節奏快速、極簡風格的 Roguelike 卡牌構築遊戲。每一局先在營地開寶箱、從三張牌中選一張構築牌組，再迎戰正在吸取王國電力的魔王。戰鬥只有生命、護甲、攻擊力三個數值。</p>
-      <p class="en">A fast, minimalist roguelike deck-builder: build your deck at the camp, then face the boss draining the kingdom's power.</p>
       <div class="shots landscape">
         <img src="img/isekaisos-1.jpg" alt="遊戲主畫面：傳送門與王國選擇" loading="lazy" width="776" height="358">
         <img src="img/isekaisos-2.jpg" alt="遊戲截圖" loading="lazy" width="776" height="358">
@@ -62,7 +78,6 @@
         </div>
       </div>
       <p>設定每日喝水杯數，每喝完一杯，水面下降揭開藏在水下的可愛圖案。連續達標可以收集圖卡、解鎖季節特效，支援桌面小工具與多國語言。</p>
-      <p class="en">A playful water-intake tracker: every cup you drink reveals a hidden picture, with collectible cards, seasonal effects and home screen widgets.</p>
       <div class="shots portrait">
         <img src="img/waterpurr-1.jpg" alt="桌面小工具" loading="lazy" width="276" height="600">
         <img src="img/waterpurr-2.jpg" alt="App 截圖" loading="lazy" width="276" height="600">
@@ -83,21 +98,19 @@
 <section id="support" class="support">
   <div class="wrap">
     <h2>支援與聯絡</h2>
-    <p class="en">Support &amp; Contact</p>
     <p>使用上遇到問題、想回報錯誤或提供建議，請填寫各 App 的意見回饋表單。</p>
-    <p class="en">For bug reports or feedback, please use the form for each app.</p>
     <div class="feedback">
       <a href="https://sites.google.com/view/isekai-sos/feedback"><img src="img/isekaisos-icon.png" alt="" width="72" height="72">異世界救援</a>
       <a href="https://sites.google.com/view/yupeilin/waterpurr"><img src="img/waterpurr-icon.png" alt="" width="72" height="72">喵星水管家</a>
     </div>
-    <p>其他事項請來信：<a href="mailto:apprdteam@gmail.com">apprdteam@gmail.com</a> <span class="en">· Other inquiries</span></p>
+    <p>其他事項請來信：<a href="mailto:apprdteam@gmail.com">apprdteam@gmail.com</a></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <p>開發：Jason Hung｜發行帳號：YU PEI LIN</p>
-    <p><a href="about/">關於開發者</a> <span class="en">· About the developer</span></p>
+    <p><a href="about/">關於開發者</a></p>
     <p>© 2026 Jason Hung</p>
   </div>
 </footer>
