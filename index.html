@@ -3,152 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jason Hung｜獨立 App 開發</title>
-<meta name="description" content="Jason Hung，獨立 App 與遊戲開發者。作品：異世界救援 Isekai SOS、喵星水管家 WaterPurr。">
-<style>
-  :root {
-    --bg: #f7f7f5;
-    --surface: #ffffff;
-    --text: #1d1d1f;
-    --muted: #5f6368;
-    --line: #e3e3e0;
-    --accent: #6d4bd8;
-    --accent-soft: #efeafd;
-    --gold: #8a5a00;
-    --gold-soft: #fbefd2;
-    --merit: #3f5a73;
-    --merit-soft: #e4ebf2;
-    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.05);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #121214;
-      --surface: #1c1c1f;
-      --text: #ececec;
-      --muted: #a0a0a6;
-      --line: #2e2e33;
-      --accent: #a78bfa;
-      --accent-soft: #2a2340;
-      --gold: #f2c45a;
-      --gold-soft: #3a2e12;
-      --merit: #a9c1d8;
-      --merit-soft: #1f2a35;
-      --shadow: none;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #121214;
-    --surface: #1c1c1f;
-    --text: #ececec;
-    --muted: #a0a0a6;
-    --line: #2e2e33;
-    --accent: #a78bfa;
-    --accent-soft: #2a2340;
-    --gold: #f2c45a;
-    --gold-soft: #3a2e12;
-    --merit: #a9c1d8;
-    --merit-soft: #1f2a35;
-    --shadow: none;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font: 16px/1.75 -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
-  .en { color: var(--muted); font-size: .9em; }
-
-  header.hero { padding: 72px 0 48px; }
-  .hero h1 { font-size: clamp(2rem, 6vw, 2.75rem); line-height: 1.2; margin: 0 0 8px; letter-spacing: -.01em; }
-  .hero .role { font-size: 1.15rem; color: var(--muted); margin: 0 0 20px; }
-  .hero p { max-width: 640px; margin: 0 0 8px; }
-  .hero .links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn {
-    display: inline-block; padding: 8px 16px; border-radius: 999px;
-    border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: .95rem;
-  }
-  .btn:hover { text-decoration: none; border-color: var(--accent); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-  section { padding: 40px 0; border-top: 1px solid var(--line); }
-  section > .wrap > h2 { font-size: 1.4rem; margin: 0 0 4px; }
-  section > .wrap > .en { margin: 0 0 24px; }
-
-  .app {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
-    box-shadow: var(--shadow); padding: 24px; margin-bottom: 24px;
-  }
-  .app-head { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; }
-  .app-head img { width: 72px; height: 72px; border-radius: 16px; flex: none; }
-  .app-head h3 { margin: 0; font-size: 1.25rem; line-height: 1.3; }
-  .app-head .tag { color: var(--muted); font-size: .9rem; }
-  .app p { margin: 0 0 12px; }
-  .credit { font-size: .9rem; color: var(--muted); background: var(--bg); border-radius: 8px; padding: 8px 12px; margin: 0 0 12px; }
-  .credit b { color: var(--text); font-weight: 600; }
-  .shots { display: flex; gap: 10px; overflow-x: auto; padding: 4px 0 8px; margin: 16px 0; scroll-snap-type: x mandatory; }
-  .shots img { border-radius: 10px; border: 1px solid var(--line); scroll-snap-align: start; flex: none; background: var(--line); }
-  .shots.landscape img { height: 180px; width: auto; }
-  .shots.portrait img { height: 300px; width: auto; }
-  .store { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: .95rem; }
-  .store .soon { color: var(--muted); }
-
-  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; }
-  .service { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
-  .service h3 { margin: 0 0 6px; font-size: 1.05rem; }
-  .service p { margin: 0; color: var(--muted); font-size: .95rem; }
-
-  .writing { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .writing li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
-  .writing li.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-  .writing .yr { display: block; font-size: .85rem; color: var(--muted); }
-  .writing a { font-weight: 600; }
-  .more { margin: 16px 0 0; }
-  .award { display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 999px; font-size: .8rem; font-weight: 600; background: var(--accent-soft); color: var(--accent); }
-  .award.gold { background: var(--gold-soft); color: var(--gold); }
-  .award.merit { background: var(--merit-soft); color: var(--merit); }
-  .timeline { list-style: none; margin: 0; padding: 0 0 0 20px; border-left: 2px solid var(--line); }
-  .timeline li { position: relative; padding: 0 0 20px 8px; }
-  .timeline li::before {
-    content: ""; position: absolute; left: -27px; top: 9px; width: 12px; height: 12px;
-    border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft);
-  }
-  .timeline time { display: block; font-weight: 600; font-variant-numeric: tabular-nums; }
-
-  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
-  footer p { margin: 0 0 4px; }
-
-  @media (max-width: 480px) {
-    header.hero { padding: 48px 0 32px; }
-    .app { padding: 18px; }
-    .shots.landscape img { height: 140px; }
-    .shots.portrait img { height: 240px; }
-  }
-</style>
+<title>異世界救援・喵星水管家｜官方網站</title>
+<meta name="description" content="《異世界救援 Isekai SOS》與《喵星水管家 WaterPurr》官方網站：App 介紹、隱私權政策與支援聯絡方式。">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <h1>Jason Hung</h1>
-    <p class="role">獨立 App 與遊戲開發者 <span class="en">· Indie App &amp; Game Developer</span></p>
-    <p>從企劃、程式、美術整合到上架與營運，一個人完成 iOS / Android App 的完整開發流程。目前有兩款作品在商店上架。</p>
-    <p class="en">I design, build, ship and maintain iOS and Android apps end to end. Two titles are currently live on the app stores.</p>
+    <h1>異世界救援・喵星水管家</h1>
+    <p class="role">官方網站 <span class="en">· Isekai SOS &amp; WaterPurr Official Site</span></p>
+    <p>這裡提供 App 介紹、商店連結、隱私權政策，以及使用上遇到問題時的聯絡方式。</p>
+    <p class="en">App info, store links, privacy policies and support for Isekai SOS and WaterPurr.</p>
     <div class="links">
-      <a class="btn primary" href="#apps">看作品</a>
-      <a class="btn" href="mailto:apprdteam@gmail.com">聯絡我</a>
+      <a class="btn primary" href="#apps">App 介紹</a>
+      <a class="btn" href="#support">支援與聯絡</a>
     </div>
   </div>
 </header>
 
 <section id="apps">
   <div class="wrap">
-    <h2>作品</h2>
+    <h2>App</h2>
     <p class="en">Apps</p>
 
     <article class="app">
@@ -156,12 +32,11 @@
         <img src="img/isekaisos-icon.png" alt="異世界救援 Isekai SOS 圖示">
         <div>
           <h3>異世界救援 Isekai SOS</h3>
-          <div class="tag">Roguelike 卡牌構築遊戲 · Godot 4 · iOS / Android / Web</div>
+          <div class="tag">Roguelike 卡牌構築遊戲 · iOS / Android / Web</div>
         </div>
       </div>
       <p>節奏快速、極簡風格的 Roguelike 卡牌構築遊戲。每一局先在營地開寶箱、從三張牌中選一張構築牌組，再迎戰正在吸取王國電力的魔王。戰鬥只有生命、護甲、攻擊力三個數值。</p>
       <p class="en">A fast, minimalist roguelike deck-builder: build your deck at the camp, then face the boss draining the kingdom's power.</p>
-      <p class="credit"><b>負責</b>：企劃、程式開發、iOS / Android 上架、AdMob 廣告串接｜<b>發行帳號</b>：YU PEI LIN</p>
       <div class="shots landscape">
         <img src="img/isekaisos-1.jpg" alt="遊戲主畫面：傳送門與王國選擇" loading="lazy" width="776" height="358">
         <img src="img/isekaisos-2.jpg" alt="遊戲截圖" loading="lazy" width="776" height="358">
@@ -174,6 +49,7 @@
         <span class="soon">Google Play（即將上架）</span>
         <a href="https://jasonhungapp.github.io/ObsidianTrial-web/">網頁試玩版</a>
         <a href="isekaisos/privacy/">隱私權政策</a>
+        <a href="https://sites.google.com/view/isekai-sos/feedback">意見回饋</a>
       </div>
     </article>
 
@@ -187,7 +63,6 @@
       </div>
       <p>設定每日喝水杯數，每喝完一杯，水面下降揭開藏在水下的可愛圖案。連續達標可以收集圖卡、解鎖季節特效，支援桌面小工具與多國語言。</p>
       <p class="en">A playful water-intake tracker: every cup you drink reveals a hidden picture, with collectible cards, seasonal effects and home screen widgets.</p>
-      <p class="credit"><b>負責</b>：企劃、程式開發、iOS / Android 上架與改版維護｜<b>發行帳號</b>：YU PEI LIN</p>
       <div class="shots portrait">
         <img src="img/waterpurr-1.jpg" alt="桌面小工具" loading="lazy" width="276" height="600">
         <img src="img/waterpurr-2.jpg" alt="App 截圖" loading="lazy" width="276" height="600">
@@ -199,78 +74,30 @@
         <a href="https://apps.apple.com/app/id6740752118">App Store</a>
         <a href="https://play.google.com/store/apps/details?id=com.yupeilin.waterpurr">Google Play</a>
         <a href="waterpurr/privacy/">隱私權政策</a>
+        <a href="https://sites.google.com/view/yupeilin/waterpurr">意見回饋</a>
       </div>
     </article>
   </div>
 </section>
 
-<section id="services">
+<section id="support" class="support">
   <div class="wrap">
-    <h2>專長</h2>
-    <p class="en">Skills</p>
-    <div class="services">
-      <div class="service">
-        <h3>iOS / Android App 開發</h3>
-        <p>iOS 與 Android 雙平台開發與上架，含桌面小工具、多國語言、網頁版輸出。</p>
-      </div>
-      <div class="service">
-        <h3>遊戲開發</h3>
-        <p>Godot 4 / GDScript：玩法設計、數值平衡、戰鬥手感、音效與動畫整合。</p>
-      </div>
-      <div class="service">
-        <h3>上架與營運</h3>
-        <p>App Store / Google Play 送審、商店素材與多語系文案、版本管理與更新。</p>
-      </div>
-      <div class="service">
-        <h3>廣告變現與法遵</h3>
-        <p>AdMob 獎勵廣告、UMP 使用者同意、隱私權政策、app-ads.txt 設定。</p>
-      </div>
+    <h2>支援與聯絡</h2>
+    <p class="en">Support &amp; Contact</p>
+    <p>使用上遇到問題、想回報錯誤或提供建議，請填寫各 App 的意見回饋表單。</p>
+    <p class="en">For bug reports or feedback, please use the form for each app.</p>
+    <div class="feedback">
+      <a href="https://sites.google.com/view/isekai-sos/feedback"><img src="img/isekaisos-icon.png" alt="" width="72" height="72">異世界救援</a>
+      <a href="https://sites.google.com/view/yupeilin/waterpurr"><img src="img/waterpurr-icon.png" alt="" width="72" height="72">喵星水管家</a>
     </div>
-  </div>
-</section>
-
-<section id="writing">
-  <div class="wrap">
-    <h2>技術寫作</h2>
-    <p class="en">Writing · iThome Ironman Contest</p>
-    <p>從第 11 屆起參加 iThome 鐵人賽，每個系列 30 天不間斷發文，8 個系列全數完賽，2 度獲獎。</p>
-    <ul class="writing">
-      <li class="featured"><span class="yr">2026（第 18 屆）· Vibe Coding 組 · 32 篇</span><a href="https://ithelp.ithome.com.tw/users/20120243/ironman/9669">從 Vibe Coding 到系統架構：Gemini x Claude Code 雙 AI 協同開發 Godot 2D Roguelike 卡牌遊戲實戰</a><br>記錄用 AI 協作從零開發並上架《異世界救援》的過程：怎麼下提示、怎麼驗收 AI 產出、在快速迭代中維持程式碼品質。</li>
-      <li><span class="yr">2024（第 16 屆）· Mobile Development · 30 篇<span class="award gold">優選</span></span><a href="https://ithelp.ithome.com.tw/users/20120243/ironman/7791">Swift iOS UIKit 初學者系列：從零開始開發互動式應用</a></li>
-      <li><span class="yr">2023（第 15 屆）· AI &amp; Data · 48 篇</span><a href="https://ithelp.ithome.com.tw/users/20120243/ironman/6805">30天深度探索免費生成式AI工具：實踐多樣AIGC應用</a></li>
-      <li><span class="yr">2021（第 13 屆）· IT 管理 · 30 篇</span><a href="https://ithelp.ithome.com.tw/users/20120243/ironman/4818">「Google Apps Script」學習筆記</a></li>
-      <li><span class="yr">2020（第 12 屆）· Mobile Development · 30 篇<span class="award merit">佳作</span></span><a href="https://ithelp.ithome.com.tw/users/20120243/ironman/3730">「Google Flutter」學習筆記</a></li>
-      <li><span class="yr">2019（第 11 屆）· Google Developers Machine Learning · 31 篇</span><a href="https://ithelp.ithome.com.tw/users/20120243/ironman/2404">「Google Machine Learning」學習筆記</a></li>
-    </ul>
-    <p class="more"><a href="https://ithelp.ithome.com.tw/users/20120243/ironman">所有系列文章 →</a>　<a href="https://ithelp.ithome.com.tw/users/20120243/profile">獎項與完賽紀錄（iThome 官方）→</a></p>
-  </div>
-</section>
-
-<section id="timeline">
-  <div class="wrap">
-    <h2>開發歷程</h2>
-    <p class="en">Timeline</p>
-    <ol class="timeline">
-      <li><time>2026.10</time>異世界救援 Isekai SOS 1.0.0 於 App Store 上架，Google Play 正式版送審</li>
-      <li><time>2026.09</time>喵星水管家 2.4.0 更新</li>
-      <li><time>2026.08</time>異世界救援開始開發（Godot 4），並推出網頁試玩版</li>
-      <li><time>2025.05</time>喵星水管家 Android 版於 Google Play 上架</li>
-      <li><time>2025.01</time>喵星水管家 WaterPurr 於 App Store 上架</li>
-    </ol>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <h2>聯絡</h2>
-    <p class="en">Contact</p>
-    <p>Email：<a href="mailto:apprdteam@gmail.com">apprdteam@gmail.com</a><br>
-    LinkedIn：<a href="https://www.linkedin.com/in/jasonhung58/">linkedin.com/in/jasonhung58</a></p>
+    <p>其他事項請來信：<a href="mailto:apprdteam@gmail.com">apprdteam@gmail.com</a> <span class="en">· Other inquiries</span></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
+    <p>開發：Jason Hung｜發行帳號：YU PEI LIN</p>
+    <p><a href="about/">關於開發者</a> <span class="en">· About the developer</span></p>
     <p>© 2026 Jason Hung</p>
   </div>
 </footer>
